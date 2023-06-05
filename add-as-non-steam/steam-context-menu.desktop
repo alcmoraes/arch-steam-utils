@@ -8,4 +8,4 @@ X-KDE-ServiceTypes=KonqPopupMenu/Plugin
 [Desktop Action addToSteam]
 Name=Add To Steam
 Exec=~/.bin/aans %f
-Icon=folder-add
+Icon=steam

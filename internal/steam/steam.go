@@ -1,4 +1,4 @@
-package pkg
+package steam
 
 import (
 	"os"
@@ -8,10 +8,14 @@ import (
 
 var COMPATDATA = path.Join(os.Getenv("HOME"), ".local/share/Steam/steamapps/compatdata")
 
+// Get UserID
 func GetUserID() string {
 	const steam_path = ".local/share/Steam/userdata"
 	h := os.Getenv("HOME")
 	entries, _ := os.ReadDir(path.Join(h, steam_path))
+	if len(entries) == 0 {
+		panic("No Steam User ID found")
+	}
 	return entries[0].Name()
 }
 

@@ -1,14 +1,15 @@
-package pkg
+package vdf
 
 import (
 	"fmt"
 	"os"
 	"path"
 
+	"github.com/alcmoraes/arch-steam-utils/internal/steam"
 	"github.com/wakeful-cloud/vdf"
 )
 
-var SHORTCUTS = path.Join(os.Getenv("HOME"), fmt.Sprintf(".local/share/Steam/userdata/%s/config/shortcuts.vdf", GetUserID()))
+var SHORTCUTS = path.Join(os.Getenv("HOME"), fmt.Sprintf(".local/share/Steam/userdata/%s/config/shortcuts.vdf", steam.GetUserID()))
 
 type VDF struct {
 	vdfMap vdf.Map
@@ -17,7 +18,7 @@ type VDF struct {
 func (v *VDF) AddEntry(name, filePath, baseDir string) {
 
 	newEntry := vdf.Map{
-		"appid":               GetNextAppID(),
+		"appid":               steam.GetNextAppID(),
 		"AllowDesktopConfig":  uint32(1),
 		"AllowOverlay":        uint32(1),
 		"AppName":             name,
